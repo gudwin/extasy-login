@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<phpunit bootstrap="./tests/bootstrap.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true">
+
+    <testsuites>
+        <testsuite name="API Unit Tests">
+            <directory suffix="Test.php" phpVersion="5.5">./tests/</directory>
+        </testsuite>
+    </testsuites>
+    <groups>
+        <include>
+            testGetAttemptsCountForPeriod
+        </include>
+        <include>testGetLoginInfo</include>
+    </groups>
+
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">./src</directory>
+        </whitelist>
+    </filter>
+
+    <logging>
+        <log type="coverage-html" target="runtime/coverage" charset="UTF-8" yui="true" />
+    </logging>
+
+</phpunit>
