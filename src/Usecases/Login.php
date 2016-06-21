@@ -24,12 +24,13 @@ class Login
         $this->configuration = $configuration;
         $this->user = $user;
     }
-    protected function action() {
-        $isBanned = !empty( $this->user->confirmation_code->getValue());
-        if ( $isBanned ) {
+
+    protected function action()
+    {
+        if ($this->user->isBanned()) {
             throw new ForbiddenException('User not allowed to login');
         }
 
-        $this->configuration->sessionRepository->setCurrentUser( $this->user );
+        $this->configuration->sessionRepository->setCurrentUser($this->user);
     }
 }
